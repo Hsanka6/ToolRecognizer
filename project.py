@@ -40,7 +40,7 @@ def getInstructions():
     for recipe in data.values():
         instructionsList.append(recipe["instructions"] + " a")
 
-    print("here" + instructionsList[0])
+#    print("here" + instructionsList[0])
     return instructionsList
 
 
@@ -56,6 +56,7 @@ def cleanInstructions(instructionsList):
 def findTools(recipeNum, instructionsWordList):
     
 #    masterTools = [word in recipeWords for word in tools]
+#    print(instructionsWordList[recipeNum])
     masterTools = []
     buffer = ""
     for word in instructionsWordList[recipeNum]:
@@ -67,9 +68,17 @@ def findTools(recipeNum, instructionsWordList):
                 masterTools.append(buffer)
             buffer = ""
 
-    for word in masterTools:
-        if word not in toolsMaster:
-            masterTools.remove(word)
+
+    for i in range(0, len(masterTools)):
+        if masterTools[i] not in toolsMaster:
+            masterTools[i] = ''
+    masterTools = list(filter(None, masterTools)) # fastest
+
+    masterTools = list(set(masterTools))
+
+    print(len(masterTools))
+
+
     return masterTools
 
 
@@ -79,12 +88,13 @@ def findTools(recipeNum, instructionsWordList):
 
 getTools()
 getInstructions()
-print(len(instructionsList))
-print(len(cleanInstructions(instructionsList)))
+cleanInstructions(instructionsList)
 
 
-print(findTools(1,instructionsWordList))
+recipeNumber = input("What recipe do you want the tools for?")
 
+print("These are the tools you need:")
+print(findTools(int(recipeNumber),instructionsWordList))
 #findTools(instruction, instructionsList)
 
 
