@@ -10,9 +10,6 @@ biscuit
 press
 blow
 torch
-boil
-over
-preventer
 bottle
 opener
 bowl
