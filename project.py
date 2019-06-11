@@ -76,7 +76,7 @@ def findTools(recipeNum, instructionsWordList):
 
     masterTools = list(set(masterTools))
 
-    print(len(masterTools))
+#    print(len(masterTools))
 
 
     return masterTools
@@ -94,7 +94,16 @@ cleanInstructions(instructionsList)
 recipeNumber = input("What recipe do you want the tools for?")
 
 print("These are the tools you need:")
-print(findTools(int(recipeNumber),instructionsWordList))
+toolsList = findTools(int(recipeNumber),instructionsWordList)
+
+i = 1
+
+for tool in toolsList:
+	print(str(i) + ". " + tool)
+	i += 1
+
+
+
 #findTools(instruction, instructionsList)
 
 
